@@ -33,6 +33,7 @@ def main():
     for file in sys.argv[1:]:
         if os.path.isfile(file):
             make_exec(file)
+            print("{0} is now executable".format(file))
 
 if __name__ == '__main__':
     main()
