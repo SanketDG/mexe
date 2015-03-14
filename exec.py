@@ -21,8 +21,8 @@ def put_shebang(fname):
 
 
 def make_exec(fname):
-    put_shebang(file)
-    os.chmod(file, 0755)
+    put_shebang(fname)
+    os.chmod(fname, 0755)
 
 
 def main():
