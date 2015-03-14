@@ -4,7 +4,7 @@ import os
 shebang = "#! /usr/bin/env python\n"
 
 
-def is_exec(fname):
+def contains_shebang(fname):
     with open(fname, 'r') as f:
         first_line = f.readline()
         if first_line == shebang:
@@ -12,12 +12,17 @@ def is_exec(fname):
         return False
 
 
-def make_exec(fname):
-    if not is_exec(fname):
+def put_shebang(fname):
+    if not contains_shebang(fname):
         with open(fname, 'r+') as f:
             original_text = f.read()
             f.seek(0)
             f.write(shebang + original_text)
+
+
+def make_exec(fname):
+    put_shebang(file)
+    os.chmod(file, 0755)
 
 
 def main():
@@ -28,7 +33,6 @@ def main():
     for file in sys.argv[1:]:
         if os.path.isfile(file):
             make_exec(file)
-            os.chmod(file, 0755)
 
 if __name__ == '__main__':
     main()
