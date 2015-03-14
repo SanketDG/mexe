@@ -11,8 +11,6 @@ def is_exec(fname):
             return True
         return False
 
-print is_exec("file.txt")
-
 
 def make_exec(fname):
     if not is_exec(fname):
@@ -20,8 +18,6 @@ def make_exec(fname):
             original_text = f.read()
             f.seek(0)
             f.write(shebang + original_text)
-
-make_exec("file.txt")
 
 
 def main():
@@ -32,6 +28,7 @@ def main():
     for file in sys.argv[1:]:
         if os.path.isfile(file):
             make_exec(file)
+            os.chmod(file, 0744)
 
 if __name__ == '__main__':
     main()
