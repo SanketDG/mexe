@@ -22,13 +22,13 @@ def make_exec(fname):
 
 def main():
     if len(sys.argv) == 1:
-        print("This program requires at least one parameter")
+        print("This program requires at least one parameter.")
         sys.exit(1)
 
     for file in sys.argv[1:]:
         if os.path.isfile(file):
             make_exec(file)
-            os.chmod(file, 0744)
+            os.chmod(file, 0755)
 
 if __name__ == '__main__':
     main()
