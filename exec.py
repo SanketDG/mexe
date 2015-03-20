@@ -31,10 +31,14 @@ def main():
         print("This program requires at least one parameter.")
         sys.exit(1)
 
-    for file in sys.argv[1:]:
-        if os.path.isfile(file):
-            make_exec(file)
-            print("{0} is now executable".format(file))
+    for dir in sys.argv[1:]:
+        if os.path.isfile(dir):
+            make_exec(dir)
+            print("{0} is now executable".format(dir))
+        else:
+            for filename in os.listdir(dir):
+                make_exec(filename)
+                print("{0} is now executable".format(filename))
 
 if __name__ == '__main__':
     main()
