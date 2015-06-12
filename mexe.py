@@ -5,25 +5,24 @@ import os
 shebang = "#! /usr/bin/env python\n"
 
 
-def contains_shebang(fname):
-    with open(fname, 'r') as f:
+def contains_shebang(f):
         first_line = f.readline()
         if first_line == shebang:
             return True
         return False
 
 
-def put_shebang(fname):
-    if not contains_shebang(fname):
-        with open(fname, 'r+') as f:
+def put_shebang(f):
+    if not contains_shebang(f):
             original_text = f.read()
             f.seek(0)
             f.write(shebang + original_text)
 
 
 def make_exec(fname):
-    put_shebang(fname)
-    os.chmod(fname, 0755)
+    with open(fname, 'w+') as f:
+        put_shebang(f)
+    os.chmod(fname, '0755')
 
 
 def main():
@@ -40,7 +39,7 @@ def main():
                 print("{} is not a python file".format(dir))
         else:
             for filename in os.listdir(dir):
-                if file.endswith(".py"):
+                if filename.endswith(".py"):
                     make_exec(filename)
                     print("{} is now executable".format(filename))
 
