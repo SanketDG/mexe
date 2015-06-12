@@ -33,12 +33,16 @@ def main():
 
     for dir in sys.argv[1:]:
         if os.path.isfile(dir):
-            make_exec(dir)
-            print("{0} is now executable".format(dir))
+            if dir.endswith(".py"):
+                make_exec(dir)
+                print("{} is now executable".format(dir))
+            else:
+                print("{} is not a python file".format(dir))
         else:
             for filename in os.listdir(dir):
-                make_exec(filename)
-                print("{0} is now executable".format(filename))
+                if file.endswith(".py"):
+                    make_exec(filename)
+                    print("{} is now executable".format(filename))
 
 if __name__ == '__main__':
     main()
