@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 import sys
 import os
+import stat
 
 shebang = "#! /usr/bin/env python\n"
 
@@ -22,7 +23,7 @@ def put_shebang(f):
 def make_exec(fname):
     with open(fname, 'w+') as f:
         put_shebang(f)
-    os.chmod(fname, '0755')
+    os.chmod(fname, os.stat(fname).st_mode | stat.S_IXOTH | stat.S_IXGRP | stat.S_IXUSR)
 
 
 def main():
