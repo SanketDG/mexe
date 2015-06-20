@@ -23,7 +23,8 @@ def put_shebang(f):
 def make_exec(fname):
     with open(fname, 'w+') as f:
         put_shebang(f)
-    os.chmod(fname, os.stat(fname).st_mode | stat.S_IXOTH | stat.S_IXGRP | stat.S_IXUSR)
+    os.chmod(fname, os.stat(fname).st_mode | stat.S_IXOTH | stat.S_IXGRP |
+             stat.S_IXUSR)
 
 
 def main():
