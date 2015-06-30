@@ -3,7 +3,7 @@ import sys
 import os
 import stat
 
-shebang = "#! /usr/bin/env python\n"
+shebang = "#!/usr/bin/env python\n"
 
 
 def contains_shebang(f):

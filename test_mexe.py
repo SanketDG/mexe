@@ -25,7 +25,7 @@ class TestHelperFunctions(unittest.TestCase):
         os.remove("hello.py")
 
     def test_put_shebang(self):
-        shebang = "#! /usr/bin/env python\n"
+        shebang = "#!/usr/bin/env python\n"
         with open("hello.py", "w+") as f:
             mexe.put_shebang(f)
         with open("hello.py", 'r') as f:
@@ -38,3 +38,6 @@ class TestHelperFunctions(unittest.TestCase):
         self.assertTrue(bool(st.st_mode | stat.S_IXOTH | stat.S_IXGRP |
                         stat.S_IXUSR))
         os.remove("hello.py")
+
+if __name__ == '__main__':
+    unittest.main()
