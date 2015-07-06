@@ -9,6 +9,7 @@ setup(
     description='a script for making .py files executable',
     url='',
     author='Sanket Dasgupta',
+    license='MIT',
     py_modules=['mexe'],
     author_email='sanketdasgupta@gmail.com',
     install_requires=[],
