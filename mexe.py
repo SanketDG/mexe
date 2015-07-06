@@ -1,6 +1,6 @@
-import sys
 import os
 import stat
+import sys
 
 shebang = "#!/usr/bin/env python\n"
 
