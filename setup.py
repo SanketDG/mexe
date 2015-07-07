@@ -7,7 +7,7 @@ setup(
     name='mexe',
     version='0.0.1',
     description='a script for making .py files executable',
-    url='',
+    url='https://github.com/SanketDG/mexe',
     author='Sanket Dasgupta',
     license='MIT',
     py_modules=['mexe'],
