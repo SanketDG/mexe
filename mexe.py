@@ -44,6 +44,8 @@ def main():
                 if filename.endswith(".py"):
                     make_exec(filename)
                     print("{} is now executable".format(filename))
+                else:
+                    print("{} is not a python file".format(dir))
 
 if __name__ == '__main__':
     main()

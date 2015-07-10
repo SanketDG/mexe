@@ -10,9 +10,9 @@ setup(
     description='a script for making .py files executable',
     url='https://github.com/SanketDG/mexe',
     author='Sanket Dasgupta',
+    author_email='sanketdasgupta@gmail.com',
     license='MIT',
     py_modules=['mexe'],
-    author_email='sanketdasgupta@gmail.com',
     install_requires=[],
     entry_points={
         'console_scripts': [
