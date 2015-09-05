@@ -19,6 +19,14 @@ For a directory consisting of other python files:
 mexe dirname
 ```
 
+## Tests
+
+To run tests:
+
+```bash
+./test_mexe.py
+```
+
 ## License
 
 MIT
