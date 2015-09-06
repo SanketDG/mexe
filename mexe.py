@@ -1,3 +1,4 @@
+import argparse
 import os
 import stat
 import sys
@@ -28,11 +29,12 @@ def make_exec(fname):
 
 
 def main():
-    if len(sys.argv) == 1:
-        print("This program requires at least one parameter.")
-        sys.exit(1)
 
-    for dir in sys.argv[1:]:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('files', nargs='+', help='files to be made executable')
+    args = parser.parse_args()
+
+    for dir in args.files:
         if os.path.isfile(dir):
             if dir.endswith(".py"):
                 make_exec(dir)
