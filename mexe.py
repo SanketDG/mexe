@@ -1,7 +1,8 @@
 import argparse
 import os
 import stat
-import sys
+
+__version__ = "0.0.1"
 
 shebang = "#!/usr/bin/env python\n"
 
@@ -31,7 +32,11 @@ def make_exec(fname):
 def main():
 
     parser = argparse.ArgumentParser()
+
     parser.add_argument('files', nargs='+', help='files to be made executable')
+    parser.add_argument('-v', '--version', action='version',
+                        version='%(prog)s ' + __version__, help='show version')
+
     args = parser.parse_args()
 
     for dir in args.files:

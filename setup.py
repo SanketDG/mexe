@@ -4,9 +4,11 @@ try:
 except:
     from distutils.core import setup
 
+from mexe import __version__
+
 setup(
     name='mexe',
-    version='0.0.1',
+    version=__version__,
     description='a script for making .py files executable',
     url='https://github.com/SanketDG/mexe',
     author='Sanket Dasgupta',
