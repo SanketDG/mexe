@@ -5,9 +5,9 @@ import stat
 __version__ = "0.0.2"
 
 shebangs = {
-    '2': "#!/usr/bin/env python2\n",
-    '3': "#!/usr/bin/env python3\n",
-    'default': "#!/usr/bin/env python\n"
+    '2': b"#!/usr/bin/env python2\n",
+    '3': b"#!/usr/bin/env python3\n",
+    'default': b"#!/usr/bin/env python\n"
 }
 
 
@@ -35,7 +35,7 @@ def put_shebang(f, version):
         f.seek(0)
         original_text = f.read()
         f.seek(0)
-        f.write(shebangs[version].encode('UTF-8') + original_text)
+        f.write(shebangs[version] + original_text)
 
 
 def make_exec(fname, version):
