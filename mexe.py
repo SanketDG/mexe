@@ -14,8 +14,10 @@ shebangs = {
 def parse_arguments():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('files', nargs='+', help='files to be made executable')
-    parser.add_argument("-p", "--pyversion", help="select python version")
+    parser.add_argument('file', metavar="FILE", nargs='+',
+                        help='file to be made executable')
+    parser.add_argument("-p", "--pyversion", metavar="VERSION",
+                        help="python version (2 or 3)")
     parser.add_argument('-v', '--version', action='version',
                         version='%(prog)s ' + __version__, help='show version')
 
