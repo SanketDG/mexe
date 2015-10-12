@@ -30,6 +30,12 @@ class TestHelperFunctions(unittest.TestCase):
         with open("hello.py", 'rb') as f:
             self.assertTrue(mexe.contains_shebang(f, version='3'))
 
+    def test_contains_shebang_python_bad_version(self):
+        with open("hello.py", 'wb+') as f:
+            mexe.put_shebang(f, version='default')
+        with open("hello.py", 'rb') as f:
+            self.assertRaises(KeyError, mexe.contains_shebang, f, '4')
+
     def test_not_contains_shebang(self):
         with open("hello.py", 'wb+') as f:
             f.seek(0)
@@ -55,6 +61,10 @@ class TestHelperFunctions(unittest.TestCase):
             mexe.put_shebang(f, version='3')
         with open("hello.py", 'rb') as f:
             self.assertEqual(f.readline(), mexe.shebangs['3'])
+
+    def test_put_shebang_python_bad_version(self):
+        with open("hello.py", "wb+") as f:
+            self.assertRaises(KeyError, mexe.put_shebang, f, '4')
 
     def test_make_exec(self):
         mexe.make_exec("hello.py", version='default')
