@@ -6,7 +6,8 @@ __version__ = "0.0.2"
 
 shebangs = {
     '2': "#!/usr/bin/env python2\n",
-    '3': "#!/usr/bin/env python3\n"
+    '3': "#!/usr/bin/env python3\n",
+    'default': "#!/usr/bin/env python\n"
 }
 
 
@@ -37,7 +38,9 @@ def put_shebang(f, version):
         f.write(shebangs[version].encode('UTF-8') + original_text)
 
 
-def make_exec(fname, version=3):
+def make_exec(fname, version):
+    if version is None:
+        version = 'default'
     with open(fname, 'rb+') as f:
         put_shebang(f, version)
     os.chmod(fname, os.stat(fname).st_mode | stat.S_IXOTH | stat.S_IXGRP |
