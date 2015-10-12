@@ -54,7 +54,7 @@ def main():
 
     args = parse_arguments()
 
-    for dir in args.files:
+    for dir in args.file:
         if os.path.isfile(dir):
             if dir.endswith(".py"):
                 make_exec(dir, args.pyversion)
