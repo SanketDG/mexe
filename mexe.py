@@ -25,15 +25,15 @@ def parse_arguments():
     return args
 
 
-def contains_shebang(f, version):
+def contains_shebang(f):
     first_line = f.readline()
-    if first_line == shebangs[version]:
+    if first_line in shebangs.values():
         return True
     return False
 
 
 def put_shebang(f, version):
-    if not contains_shebang(f, version):
+    if not contains_shebang(f):
         f.seek(0)
         original_text = f.read()
         f.seek(0)
