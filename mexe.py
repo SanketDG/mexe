@@ -12,6 +12,9 @@ shebangs = {
 
 
 def parse_arguments():
+    """
+    Parses all the command line arguments using argparse and returns them.
+    """
     parser = argparse.ArgumentParser()
 
     parser.add_argument('file', metavar="FILE", nargs='+',
@@ -26,6 +29,9 @@ def parse_arguments():
 
 
 def contains_shebang(f):
+    """
+    Returns true if any shebang line is present in the first line of the file.
+    """
     first_line = f.readline()
     if first_line in shebangs.values():
         return True
@@ -33,6 +39,10 @@ def contains_shebang(f):
 
 
 def put_shebang(f, version):
+    """
+    Writes a shebang to the first line of the file according to the specified
+    version. (2 | 3 | default)
+    """
     if not contains_shebang(f):
         f.seek(0)
         original_text = f.read()
@@ -41,8 +51,14 @@ def put_shebang(f, version):
 
 
 def make_exec(fname, version):
+    """
+    Writes the shebang and makes the file executable.
+    """
+    # if no version is specified, use system default.
     if version is None:
         version = 'default'
+
+    # write the shebang and then make the file executable.
     with open(fname, 'rb+') as f:
         put_shebang(f, version)
     os.chmod(fname, os.stat(fname).st_mode | stat.S_IXOTH | stat.S_IXGRP |
@@ -52,6 +68,7 @@ def make_exec(fname, version):
 
 def main():
 
+    # call the function and get the arguments.
     args = parse_arguments()
 
     for dir in args.file:
