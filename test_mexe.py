@@ -7,7 +7,12 @@ import mexe
 
 
 class TestHelperFunctions(unittest.TestCase):
-
+    """
+    Functions to test the helper functions:
+    contains_shebang()
+    put_shebang()
+    make_exec()
+    """
     @classmethod
     def tearDownClass(cls):
         os.remove("hello.py")
