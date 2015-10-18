@@ -23,6 +23,8 @@ def parse_arguments():
                         help="python version (2 or 3)")
     parser.add_argument('-v', '--version', action='version',
                         version='%(prog)s ' + __version__, help='show version')
+    parser.add_argument('-r', '--recursive', action='store_true',
+                        help='recursively iterate the directories')
 
     args = parser.parse_args()
     return args
@@ -71,18 +73,23 @@ def main():
     # call the function and get the arguments.
     args = parse_arguments()
 
-    for dir in args.file:
-        if os.path.isfile(dir):
-            if dir.endswith(".py"):
-                make_exec(dir, args.pyversion)
-            else:
-                print("{} is not a python file".format(dir))
-        else:
-            for filename in os.listdir(dir):
+    # if -r argument is given, then iterate the given directory recursively.
+    if args.recursive:
+        for root, dirs, files in os.walk(''.join(args.file)):
+            for filename in files:
                 if filename.endswith(".py"):
-                    make_exec(filename, args.pyversion)
+                    make_exec(os.path.join(root, filename), args.pyversion)
+    else:
+        for dir in args.file:
+            if os.path.isfile(dir):
+                if dir.endswith(".py"):
+                    make_exec(dir, args.pyversion)
                 else:
                     print("{} is not a python file".format(dir))
+            else:
+                for filename in os.listdir(dir):
+                    if filename.endswith(".py"):
+                        make_exec(filename, args.pyversion)
 
 if __name__ == '__main__':
     main()
