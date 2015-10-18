@@ -67,8 +67,7 @@ class TestHelperFunctions(unittest.TestCase):
     def test_make_exec(self):
         mexe.make_exec("hello.py", version='default')
         st = os.stat("hello.py")
-        self.assertTrue(bool(st.st_mode | stat.S_IXOTH | stat.S_IXGRP |
-                             stat.S_IXUSR))
+        self.assertTrue(bool(st.st_mode | 0111))
 
 if __name__ == '__main__':
     unittest.main()

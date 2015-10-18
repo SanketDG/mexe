@@ -63,8 +63,8 @@ def make_exec(fname, version):
     # write the shebang and then make the file executable.
     with open(fname, 'rb+') as f:
         put_shebang(f, version)
-    os.chmod(fname, os.stat(fname).st_mode | stat.S_IXOTH | stat.S_IXGRP |
-             stat.S_IXUSR)
+    # make the file
+    os.chmod(fname, os.stat(fname).st_mode | 0111)
     print("{} is now executable".format(fname))
 
 
