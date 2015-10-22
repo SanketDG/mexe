@@ -63,7 +63,7 @@ def make_exec(fname, version):
     with open(fname, 'rb+') as f:
         put_shebang(f, version)
     # make the file
-    os.chmod(fname, os.stat(fname).st_mode | 0111)
+    os.chmod(fname, os.stat(fname).st_mode | 0o0111)
     print("{} is now executable".format(fname))
 
 
