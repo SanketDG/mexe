@@ -1,6 +1,5 @@
 import argparse
 import os
-import stat
 
 __version__ = "0.0.2"
 
