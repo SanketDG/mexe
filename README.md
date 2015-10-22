@@ -4,11 +4,13 @@ A python script to make your Python files executable.
 
 ## Installation
 
-`pip install mexe`
+```
+pip install mexe
+```
 
 ## Usage
 
-```
+```shell
 usage: mexe [-h] [-p VERSION] [-v] FILE [FILE ...]
 
 positional arguments:
