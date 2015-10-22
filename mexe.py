@@ -1,7 +1,7 @@
 import argparse
 import os
 
-__version__ = "0.0.2"
+__version__ = "1.0"
 
 shebangs = {
     '2': b"#!/usr/bin/env python2\n",
