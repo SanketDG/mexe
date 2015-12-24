@@ -6,7 +6,8 @@ __version__ = "1.0"
 shebangs = {
     '2': b"#!/usr/bin/env python2\n",
     '3': b"#!/usr/bin/env python3\n",
-    'default': b"#!/usr/bin/env python\n"
+    'default': b"#!/usr/bin/env python\n",
+    'bash': b"#!/usr/bin/env bash"
 }
 
 
@@ -18,7 +19,7 @@ def parse_arguments():
 
     parser.add_argument('file', metavar="FILE", nargs='+',
                         help='file to be made executable')
-    parser.add_argument("-p", "--pyversion", metavar="VERSION",
+    parser.add_argument("-p", "--python", metavar="VERSION",
                         help="python version (2 or 3)")
     parser.add_argument('-v', '--version', action='version',
                         version='%(prog)s ' + __version__, help='show version')
@@ -65,6 +66,13 @@ def make_exec(fname, version):
     # make the file
     os.chmod(fname, os.stat(fname).st_mode | 0o0111)
     print("{} is now executable".format(fname))
+
+
+def move_to_path(dir):
+    # remove extension of file
+    file_name = os.path.splittext(dir)[0]
+    # move to /usr/local/bin
+    os.rename(dir, "/usr/local/bin/{}".format(file_name))
 
 
 def main():
