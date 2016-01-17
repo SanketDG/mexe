@@ -1,6 +1,9 @@
 import argparse
 import os
 
+# make print a function in python2
+from __future__ import print_function
+
 __version__ = "1.0"
 
 shebangs = {
